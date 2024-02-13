@@ -39,5 +39,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@cypress/code-coverage": "^3.12.22",
+    "@cypress/instrument-cra": "^1.4.0",
+    "cypress": "^13.6.4",
+    "start-server-and-test": "^2.0.3"
   }
 }
