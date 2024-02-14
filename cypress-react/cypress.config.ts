@@ -1,5 +1,4 @@
 import { defineConfig } from "cypress"
-import "@cypress/instrument-cra"
 
 export default defineConfig({
   e2e: {
