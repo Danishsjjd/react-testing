@@ -1,5 +1,5 @@
 {
-  "name": "cypress-cra",
+  "name": "cypress-react",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
