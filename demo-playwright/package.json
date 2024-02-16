@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "playwright test --reporter list",
-    "test:chrome": "pnpm run test --project=chromium"
+    "test:chrome": "pnpm run test --project=chromium",
+    "test:firefox": "pnpm run test --project=firefox"
   },
   "keywords": [],
   "author": "",
