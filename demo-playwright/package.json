@@ -6,7 +6,8 @@
   "scripts": {
     "test": "playwright test --reporter list",
     "test:chrome": "pnpm run test --project=chromium",
-    "test:webkit": "pnpm run test --project=webkit"
+    "test:webkit": "pnpm run test --project=webkit",
+    "test:firefox": "pnpm run test --project=firefox"
   },
   "keywords": [],
   "author": "",
