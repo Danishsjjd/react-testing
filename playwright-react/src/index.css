@@ -104,3 +104,7 @@ button:focus-visible {
 .read-the-docs {
   color: #888;
 }
+
+.completed {
+  text-decoration: line-through;
+}

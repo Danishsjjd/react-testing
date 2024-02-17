@@ -11,7 +11,7 @@ test("Heading should be visible", async ({ page }) => {
 
 test.describe("Counter", () => {
   test("should functional", async ({ page }) => {
-    const counter = page.locator("button")
+    const counter = page.getByRole("button", { name: "count is" })
     await expect(counter).toBeVisible()
     await expect(counter).toHaveText("count is 0")
     await counter.click()

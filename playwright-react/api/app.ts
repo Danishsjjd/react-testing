@@ -1,13 +1,14 @@
 import express, { Request, Response } from "express"
 import { Todo } from "./type"
+import cors from "cors"
 
 let todos: Todo[] = []
 
 const app = express()
 const PORT = 3000
 
+app.use(cors())
 app.use(express.json())
-
 app.get("/get-all", (_, res) => res.json(todos))
 
 app.post("/add", (req: Request, res: Response) => {
@@ -26,13 +27,9 @@ app.post("/add", (req: Request, res: Response) => {
 })
 
 app.put("/set-all", (req: Request, res: Response) => {
-  const newTodos: Todo[] = req.body
+  const newTodos: Todo[] = Array.isArray(req.body) ? req.body : []
 
-  if (!Array.isArray(newTodos)) {
-    return res.status(400).json({ error: "Invalid data format" })
-  }
-
-  todos = newTodos
+  todos = newTodos || []
   res.status(200).json(todos)
 })
 
