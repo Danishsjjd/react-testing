@@ -8,6 +8,8 @@ export default defineConfig({
     environment: "jsdom",
     globals: true,
     setupFiles: "./tests/setup.ts",
-    // TODO: coverage
+    coverage: {
+      provider: "v8",
+    },
   },
 })
