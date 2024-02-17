@@ -27,8 +27,8 @@ async function getAll(request: APIRequestContext) {
   }
 }
 
-test.beforeEach(({ request }) => {
-  setAll(request, [])
+test.beforeEach(async ({ request }) => {
+  await setAll(request, [])
 })
 
 test("setAll should be able to clear all todos", async ({ request }) => {

@@ -25,7 +25,6 @@ app.post("/add", (req: Request, res: Response) => {
   res.status(201).json(newTodo)
 })
 
-// Set all todos
 app.put("/set-all", (req: Request, res: Response) => {
   const newTodos: Todo[] = req.body
 
@@ -37,7 +36,6 @@ app.put("/set-all", (req: Request, res: Response) => {
   res.status(200).json(todos)
 })
 
-// Toggle todo completion status
 app.put("/toggle/:id", (req: Request, res: Response) => {
   const { id } = req.params
   const todoIndex = todos.findIndex((todo) => todo.id === parseInt(id))
@@ -50,7 +48,6 @@ app.put("/toggle/:id", (req: Request, res: Response) => {
   res.status(200).json(todos[todoIndex])
 })
 
-// Start server
 app.listen(PORT, () =>
   console.log(`Server is running on http://localhost:${PORT}`)
 )
