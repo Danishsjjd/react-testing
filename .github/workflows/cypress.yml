@@ -8,11 +8,18 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./cypress-react
     steps:
       - uses: actions/checkout@v4
-
-      - name: Cypress tests
-        uses: cypress-io/github-action@v6
+      - uses: actions/setup-node@v3
         with:
-          working-directory: cypress-react
-          build: npx cypress info
+          node-version: 18
+      - name: Install dependencies
+        run: |
+          npm install -g pnpm
+          pnpm install 
+          npx cypress info
+      - name: Run cypress tests
+        run: pnpm run cy:run
