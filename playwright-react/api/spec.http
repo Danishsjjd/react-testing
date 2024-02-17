@@ -1,0 +1,18 @@
+@api=http://localhost:3000
+
+###
+GET {{api}}/get-all
+
+###
+POST {{api}}/add
+Content-Type: application/json
+
+{
+    "task": "Learn Playwright"
+}
+
+###
+PUT  {{api}}/set-all
+Content-Type: application/json
+
+[]

@@ -16,7 +16,5 @@ test.describe("Counter", () => {
     await expect(counter).toHaveText("count is 0")
     await counter.click()
     await expect(counter).toHaveText("count is 1")
-
-    page.locator("getByRole('heading', { name: 'Vite + React' })")
   })
 })
