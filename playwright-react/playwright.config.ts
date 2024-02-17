@@ -69,9 +69,16 @@ export default defineConfig({
   ],
 
   /* Run your local dev server before starting the tests */
-  webServer: {
-    command: "pnpm run dev --host",
-    url: "http://127.0.0.1:5173",
-    reuseExistingServer: !process.env.CI,
-  },
+  webServer: [
+    {
+      command: "cross-env NODE_ENV=test pnpm run dev --host",
+      url: "http://127.0.0.1:5173",
+      reuseExistingServer: !process.env.CI,
+    },
+    {
+      command: "cd ./api && pnpm run dev",
+      url: "http://127.0.0.1:3000/get-all",
+      reuseExistingServer: !process.env.CI,
+    },
+  ],
 })
