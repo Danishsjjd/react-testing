@@ -11,7 +11,9 @@
     "test": "cross-env DEBUG=pw.webserver NODE_ENV=test playwright test",
     "test:reporter:list": "pnpm run test --reporter list",
     "test:chrome": "pnpm run test --project=chromium",
-    "test:webkit": "pnpm run test --project=webkit"
+    "test:webkit": "pnpm run test --project=webkit",
+    "test:ui": "pnpm run test --ui",
+    "test:debug": "pnpm run test --debug"
   },
   "dependencies": {
     "@tanstack/react-router": "^1.16.5",
