@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "types": ["@testing-library/jest-dom/vitest"],
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
@@ -18,9 +17,9 @@
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "tests", "src/environment.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

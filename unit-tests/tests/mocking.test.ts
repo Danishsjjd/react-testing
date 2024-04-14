@@ -102,6 +102,7 @@ describe("signUp", () => {
     // vi.mocked(sendEmail).mockClear() // clear all information about every call
     // vi.mocked(sendEmail).mockReset() // same as mockClear, but also clear implementation to empty function
     // vi.mocked(sendEmail).mockRestore() // similar to mockClear, but instead of setting the inner function to empty function, it restore the original implementation
+    // clear mock can also be set config level, see vite.config.ts
   })
 
   it("should return false if email is not valid", async () => {
