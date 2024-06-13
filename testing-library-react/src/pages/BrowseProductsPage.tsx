@@ -43,8 +43,8 @@ function BrowseProducts() {
         setCategoriesLoading(false)
       }
     }
-    fetchCategories()
-    fetchProducts()
+    void fetchCategories()
+    void fetchProducts()
   }, [])
 
   if (errorProducts) return <div>Error: {errorProducts}</div>

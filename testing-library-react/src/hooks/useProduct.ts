@@ -3,7 +3,7 @@ import { useQuery } from "react-query"
 import { Product } from "../entities"
 
 const useProduct = (productId: number) => {
-  return useQuery<Product, Error>({
+  return useQuery<Product | null, Error>({
     queryKey: ["products", productId],
     queryFn: () => fetchProduct(productId),
     cacheTime: 0,
@@ -13,7 +13,7 @@ const useProduct = (productId: number) => {
 const fetchProduct = async (id: number) => {
   try {
     if (isNaN(id)) return null
-    const { data } = await axios.get(`/products/${id}`)
+    const { data } = await axios.get<Product>(`/products/${id}`)
     return data
   } catch (error) {
     if (

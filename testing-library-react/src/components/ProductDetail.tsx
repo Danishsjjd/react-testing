@@ -14,10 +14,11 @@ const ProductDetail = ({ productId }: { productId: number }) => {
 
     setLoading(true)
     fetch("/products/" + productId)
-      .then((res) => res.json())
+      .then((res) => res.json() as Promise<Product>)
       .then((data) => setProduct(data))
       .catch((err) => setError((err as Error).message))
       .finally(() => setLoading(false))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   if (isLoading) return <div>Loading...</div>
