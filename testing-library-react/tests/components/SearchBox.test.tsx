@@ -1,24 +1,39 @@
-import { it, expect, describe, vi } from "vitest"
-import SearchBox from "../../src/components/SearchBox"
 import { render, screen } from "@testing-library/react"
+import SearchBox from "../../src/components/SearchBox"
 import userEvent from "@testing-library/user-event"
 
 describe("SearchBox", () => {
-  it("should render input that submit the onChange callback if the length of value is greater then 0", async () => {
-    const fc = vi.fn()
-    render(<SearchBox onChange={fc} />)
+  const renderSearchBox = () => {
+    const onChange = vi.fn()
+    render(<SearchBox onChange={onChange} />)
 
-    const input = screen.getByPlaceholderText(/search/i)
+    return {
+      input: screen.getByPlaceholderText(/search/i),
+      user: userEvent.setup(),
+      onChange,
+    }
+  }
 
-    const user = userEvent.setup()
+  it("should render an input field for searching", () => {
+    const { input } = renderSearchBox()
+
+    expect(input).toBeInTheDocument()
+  })
+
+  it("should call onChange when Enter is pressed", async () => {
+    const { input, onChange, user } = renderSearchBox()
+
+    const searchTerm = "SearchTerm"
+    await user.type(input, searchTerm + "{enter}")
+
+    expect(onChange).toHaveBeenCalledWith(searchTerm)
+  })
+
+  it("should not call onChange if input field is empty", async () => {
+    const { input, onChange, user } = renderSearchBox()
+
     await user.type(input, "{enter}")
 
-    expect(fc).toHaveBeenCalledTimes(0)
-
-    const search = "Search"
-    await user.type(input, `${search}{enter}`)
-
-    expect(fc).toHaveBeenCalledTimes(1)
-    expect(fc).toHaveBeenCalledWith(search)
+    expect(onChange).not.toHaveBeenCalled()
   })
 })

@@ -1,26 +1,29 @@
 import { render, screen } from "@testing-library/react"
-import { describe, expect, it } from "vitest"
-import UserAccount from "../../src/components/UserAccount"
 import { User } from "../../src/entities"
-
-const user: User = { id: 1, name: "Danish", isAdmin: false }
-const admin: User = { ...user, isAdmin: true }
+import UserAccount from "../../src/components/UserAccount"
 
 describe("UserAccount", () => {
-  it("should render username", () => {
+  it("should render user name", () => {
+    const user: User = { id: 1, name: "Danish" }
+
     render(<UserAccount user={user} />)
 
-    expect(screen.getByText(user.name)).toBeVisible()
+    expect(screen.getByText(user.name)).toBeInTheDocument()
   })
+
   it("should render edit button if user is admin", () => {
-    render(<UserAccount user={admin} />)
+    const user: User = { id: 1, name: "Danish", isAdmin: true }
+
+    render(<UserAccount user={user} />)
 
     const button = screen.getByRole("button")
-
     expect(button).toBeInTheDocument()
     expect(button).toHaveTextContent(/edit/i)
   })
+
   it("should not render edit button if user is not admin", () => {
+    const user: User = { id: 1, name: "Danish" }
+
     render(<UserAccount user={user} />)
 
     const button = screen.queryByRole("button")
