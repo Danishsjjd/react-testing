@@ -10,31 +10,31 @@
 
 // Import Routes
 
-import { Route as rootRoute } from './routes/__root'
-import { Route as TodoImport } from './routes/todo'
-import { Route as IndexImport } from './routes/index'
+import { Route as rootRoute } from "./routes/__root"
+import { Route as TodoImport } from "./routes/todo"
+import { Route as IndexImport } from "./routes/index"
 
 // Create/Update Routes
 
 const TodoRoute = TodoImport.update({
-  path: '/todo',
+  path: "/todo",
   getParentRoute: () => rootRoute,
 } as any)
 
 const IndexRoute = IndexImport.update({
-  path: '/',
+  path: "/",
   getParentRoute: () => rootRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
 
-declare module '@tanstack/react-router' {
+declare module "@tanstack/react-router" {
   interface FileRoutesByPath {
-    '/': {
+    "/": {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/todo': {
+    "/todo": {
       preLoaderRoute: typeof TodoImport
       parentRoute: typeof rootRoute
     }
