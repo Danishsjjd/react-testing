@@ -1,13 +1,7 @@
-import SearchBox from "../components/SearchBox"
+import ProductList from "../components/ProductList"
 
 const PlaygroundPage = () => {
-  return (
-    <SearchBox
-      onChange={(value) => {
-        alert(value)
-      }}
-    />
-  )
+  return <ProductList />
 }
 
 export default PlaygroundPage

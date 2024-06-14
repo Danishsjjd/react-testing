@@ -1,7 +1,11 @@
 import "@testing-library/jest-dom/vitest"
 import { cleanup } from "@testing-library/react"
 import ResizeObserver from "resize-observer-polyfill"
-import { afterEach, vi } from "vitest"
+import { server } from "./mocks/node"
+
+beforeAll(() => server.listen())
+afterEach(() => server.resetHandlers())
+afterAll(() => server.close())
 
 global.ResizeObserver = ResizeObserver
 
