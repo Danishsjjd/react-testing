@@ -1,0 +1,12 @@
+packages:
+  - "cypress-react"
+  - "playwright-react"
+  - "playwright-react/api"
+  - "testing-library-react"
+  - "unit-tests"
+allowBuilds:
+  browser-tabs-lock: true
+  cypress: true
+  esbuild: true
+  msw: true
+  playwright-webkit: true
